@@ -19,3 +19,4 @@ jobs:
             cd /var/www/school
             git pull 
             systemctl restart school.service
+
