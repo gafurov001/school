@@ -3,9 +3,6 @@ import sys
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-SECRET_KEY = 'django-insecure-z_-c+sy_i3z_z_!tsvt9+&-9(l%as0(wah46$*@x&taq7+4*%^'
-
 sys.path.append(os.path.join(BASE_DIR, 'apps'))
 
 DEBUG = True

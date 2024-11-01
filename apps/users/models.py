@@ -1,5 +1,5 @@
 from django.contrib.auth.models import AbstractUser
-from django.db.models import TextChoices, CharField, DateField, Model, OneToOneField, ForeignKey, SET_NULL, ImageField, \
+from django.db.models import TextChoices, CharField, DateField, Model, ImageField, \
     IntegerField
 
 from users.managers import CustomUserManager
