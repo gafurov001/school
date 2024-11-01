@@ -2,7 +2,7 @@ from rest_framework.generics import ListAPIView, CreateAPIView, ListCreateAPIVie
 
 from apps.models import Group, SkippedClass, Room, User
 from apps.serializers import GroupModelSerializer, GroupCreateModelSerializer, SkippedClassModelSerializer, \
-    RoomModelSerializer, UserModelSerializer
+    RoomModelSerializer, UserModelSerializer, UserCreateModelSerializer, UserRetrieveUpdateDestroyModelSerializer
 
 
 class GroupListAPIView(ListAPIView):
