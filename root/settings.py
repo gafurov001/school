@@ -2,6 +2,7 @@ import os
 import sys
 from pathlib import Path
 
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 sys.path.append(os.path.join(BASE_DIR, 'apps2'))
 SECRET_KEY='ghv4h#g%h4g&od6tghG&^TYF*TR*%^R'
