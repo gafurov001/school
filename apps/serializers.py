@@ -1,6 +1,6 @@
 from rest_framework.serializers import ModelSerializer
 
-from group.models import Group, SkippedClass, Room
+from models import Group, SkippedClass, Room, User
 
 
 class GroupModelSerializer(ModelSerializer):
@@ -28,3 +28,20 @@ class RoomModelSerializer(ModelSerializer):
     class Meta:
         model = Room
         fields = 'name', 'room_capacity', 'number_of_desks_and_chairs'
+
+class UserModelSerializer(ModelSerializer):
+    class Meta:
+        model = User
+        fields = 'id', 'first_name', 'last_name', 'phone_number', 'role'
+
+
+class UserCreateModelSerializer(ModelSerializer):
+    class Meta:
+        model = User
+        fields = 'first_name', 'last_name', 'phone_number', 'role', 'date_of_birth', 'gender', 'photo'
+
+
+class UserRetrieveUpdateDestroyModelSerializer(ModelSerializer):
+    class Meta:
+        model = User
+        fields = 'id', 'first_name', 'last_name', 'photo', 'balance', 'role', 'branch'

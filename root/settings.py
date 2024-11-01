@@ -3,7 +3,7 @@ import sys
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-sys.path.append(os.path.join(BASE_DIR, 'apps'))
+sys.path.append(os.path.join(BASE_DIR, 'apps2'))
 SECRET_KEY='ghv4h#g%h4g&od6tghG&^TYF*TR*%^R'
 DEBUG = True
 
@@ -19,10 +19,6 @@ INSTALLED_APPS = [
 
     'drf_spectacular',
 
-    # apps
-    'group',
-    'shared',
-    'users',
 
 ]
 
@@ -56,7 +52,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'root.wsgi.application'
-AUTH_USER_MODEL = 'users.User'
+AUTH_USER_MODEL = 'apps.User'
 
 DATABASES = {
     'default': {

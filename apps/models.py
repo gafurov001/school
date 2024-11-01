@@ -1,5 +1,29 @@
+from django.contrib.auth.models import AbstractUser
 from django.db.models import Model, OneToOneField, SET_NULL, TextChoices, CharField, ForeignKey, DateField, TimeField, \
     IntegerField, CASCADE, TextField
+from django.forms import ImageField
+
+from managers import CustomUserManager
+
+
+class User(AbstractUser):
+    class Role(TextChoices):
+        ADMIN = 'admin', 'Admin'
+        MODERATOR = 'moderator', 'Moderator'
+        TEACHER = 'teacher', 'Teacher'
+
+    username = None
+    role = CharField(max_length=20, choices=Role.choices)
+    phone_number = CharField(max_length=13, unique=True)
+    branch = CharField(max_length=255)
+    date_of_birth = DateField()
+    gender = CharField(choices=[('male', 'Male'), ('female', 'Female')])
+    balance = IntegerField(null=True, blank=True)
+    photo = ImageField(upload_to='%Y/%m/%d/', null=True, blank=True)
+
+    USERNAME_FIELD = 'phone_number'
+    REQUIRED_FIELDS = []
+    objects = CustomUserManager()
 
 
 class Room(Model):
@@ -22,16 +46,16 @@ class Group(Model):
     name = CharField(max_length=50)
     teacher = OneToOneField('users.User', SET_NULL, null=True, blank=True)
     day = CharField(max_length=20, choices=Days.choices)
-    room = ForeignKey('group.Room', SET_NULL, null=True, blank=True)
+    room = ForeignKey('Room', SET_NULL, null=True, blank=True)
     course_start_date = DateField()
     course_end_date = DateField()
     course_start_time = TimeField()
-    course = ForeignKey('group.Course', SET_NULL, null=True, blank=True)
+    course = ForeignKey('Course', SET_NULL, null=True, blank=True)
 
 
 class SkippedClass(Model):
     student = ForeignKey('users.User', CASCADE)
-    group = ForeignKey('group.Group', CASCADE)
+    group = ForeignKey('Group', CASCADE)
     date = DateField()
 
 
