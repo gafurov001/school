@@ -1,6 +1,6 @@
 from rest_framework.serializers import ModelSerializer
 
-from models import Group, SkippedClass, Room, User
+from apps.models import Group, SkippedClass, Room, User
 
 
 class GroupModelSerializer(ModelSerializer):
