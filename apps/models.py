@@ -1,7 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db.models import Model, OneToOneField, SET_NULL, TextChoices, CharField, ForeignKey, DateField, TimeField, \
-    IntegerField, CASCADE, TextField
-from django.forms import ImageField
+    IntegerField, CASCADE, TextField, ImageField
 
 from apps.managers import CustomUserManager
 
@@ -44,7 +43,7 @@ class Group(Model):
         SATURDAY = 'saturday', 'Saturday'
 
     name = CharField(max_length=50)
-    teacher = OneToOneField('users.User', SET_NULL, null=True, blank=True)
+    teacher = OneToOneField('User', SET_NULL, null=True, blank=True)
     day = CharField(max_length=20, choices=Days.choices)
     room = ForeignKey('Room', SET_NULL, null=True, blank=True)
     course_start_date = DateField()
@@ -54,13 +53,13 @@ class Group(Model):
 
 
 class SkippedClass(Model):
-    student = ForeignKey('users.User', CASCADE)
+    student = ForeignKey('User', CASCADE)
     group = ForeignKey('Group', CASCADE)
     date = DateField()
 
 
 class Debtor(Model):
-    student = ForeignKey('users.User', CASCADE)
+    student = ForeignKey('User', CASCADE)
     comment = TextField(null=True, blank=True)
 
 
