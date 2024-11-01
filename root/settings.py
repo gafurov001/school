@@ -4,7 +4,7 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 sys.path.append(os.path.join(BASE_DIR, 'apps'))
-
+SECRET_KEY='ghv4h#g%h4g&od6tghG&^TYF*TR*%^R'
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
