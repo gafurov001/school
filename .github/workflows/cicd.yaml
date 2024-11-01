@@ -17,6 +17,5 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             cd /var/www/school
-            git pull 
-            systemctl restart school.service
+            mkdir new
 
