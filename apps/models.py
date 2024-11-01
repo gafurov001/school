@@ -3,7 +3,7 @@ from django.db.models import Model, OneToOneField, SET_NULL, TextChoices, CharFi
     IntegerField, CASCADE, TextField
 from django.forms import ImageField
 
-from managers import CustomUserManager
+from apps.managers import CustomUserManager
 
 
 class User(AbstractUser):
