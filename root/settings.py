@@ -20,6 +20,7 @@ INSTALLED_APPS = [
 
     'drf_spectacular',
 
+    'apps',
 
 
 ]
@@ -54,7 +55,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'root.wsgi.application'
-AUTH_USER_MODEL = 'apps.User'
+AUTH_USER_MODEL = 'apps.models.User'
 
 DATABASES = {
     'default': {
