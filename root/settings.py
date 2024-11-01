@@ -20,6 +20,8 @@ INSTALLED_APPS = [
 
     'drf_spectacular',
 
+    'apps',
+
 
 ]
 
