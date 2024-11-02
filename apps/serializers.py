@@ -1,6 +1,6 @@
 from rest_framework.serializers import ModelSerializer
 
-from apps.models import Group, SkippedClass, Room, User
+from apps.models import Group, SkippedClass, Room, User, Course
 
 
 class GroupModelSerializer(ModelSerializer):
@@ -29,6 +29,7 @@ class RoomModelSerializer(ModelSerializer):
         model = Room
         fields = 'name', 'room_capacity', 'number_of_desks_and_chairs'
 
+
 class UserModelSerializer(ModelSerializer):
     class Meta:
         model = User
@@ -45,3 +46,9 @@ class UserRetrieveUpdateDestroyModelSerializer(ModelSerializer):
     class Meta:
         model = User
         fields = 'id', 'first_name', 'last_name', 'photo', 'balance', 'role', 'branch'
+
+
+class CourseModelSerializer(ModelSerializer):
+    class Meta:
+        model = Course
+        fields = "__all__"

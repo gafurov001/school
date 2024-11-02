@@ -2,14 +2,12 @@ import os
 import sys
 from pathlib import Path
 
-
 BASE_DIR = Path(__file__).resolve().parent.parent
-sys.path.append(os.path.join(BASE_DIR, 'apps2'))
-SECRET_KEY='ghv4h#g%h4g&od6tghG&^TYF*TR*%^R'
+# sys.path.append(os.path.join(BASE_DIR, 'apps'))
+SECRET_KEY = 'ghv4h#g%h4g&od6tghG&^TYF*TR*%^R'
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -17,10 +15,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'apps.apps.AppsConfig',
 
     'drf_spectacular',
-
-    'apps',
 
 
 ]
