@@ -1,4 +1,5 @@
-from rest_framework.generics import ListAPIView, CreateAPIView, ListCreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.generics import ListAPIView, CreateAPIView, ListCreateAPIView, RetrieveUpdateDestroyAPIView, \
+    DestroyAPIView, UpdateAPIView, RetrieveAPIView
 
 from apps.models import Group, SkippedClass, Room, User, Course
 from apps.serializers import GroupModelSerializer, GroupCreateModelSerializer, SkippedClassModelSerializer, \
@@ -16,7 +17,17 @@ class GroupCreateAPIView(CreateAPIView):
     serializer_class = GroupModelSerializer
 
 
-class GroupRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
+class GroupRetrieveAPIView(RetrieveAPIView):
+    queryset = Group.objects.all()
+    serializer_class = GroupCreateModelSerializer
+
+
+class GroupDestroyAPIView(DestroyAPIView):
+    queryset = Group.objects.all()
+    serializer_class = GroupCreateModelSerializer
+
+
+class GroupUpdateAPIView(UpdateAPIView):
     queryset = Group.objects.all()
     serializer_class = GroupCreateModelSerializer
 
@@ -41,7 +52,17 @@ class UserCreateAPIView(CreateAPIView):
     serializer_class = UserCreateModelSerializer
 
 
-class UserRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
+class UserDestroyAPIView(DestroyAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserRetrieveUpdateDestroyModelSerializer
+
+
+class UserUpdateAPIView(UpdateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserRetrieveUpdateDestroyModelSerializer
+
+
+class UserRetrieveAPIView(RetrieveAPIView):
     queryset = User.objects.all()
     serializer_class = UserRetrieveUpdateDestroyModelSerializer
 
