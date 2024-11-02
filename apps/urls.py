@@ -1,7 +1,8 @@
 from django.urls import path
 
 from apps.views import GroupListAPIView, GroupCreateAPIView, GroupRetrieveUpdateDestroyAPIView, \
-    SkippedClassListCreateAPIView, RoomListCreateAPIView, UserCreateAPIView, UserListAPIView, CourseCreateAPIView
+    SkippedClassListCreateAPIView, RoomListCreateAPIView, UserCreateAPIView, UserListAPIView, CourseCreateAPIView, \
+    UserRetrieveUpdateDestroyAPIView
 
 urlpatterns = [
     path('group/list/', GroupListAPIView.as_view()),
@@ -11,6 +12,6 @@ urlpatterns = [
     path('room/list-create/', RoomListCreateAPIView.as_view()),
     path('user/create/', UserCreateAPIView.as_view()),
     path('user/list/', UserListAPIView.as_view()),
-    path('user/detail-update-delete/', UserListAPIView.as_view()),
+    path('user/detail-update-delete/<int:pk>', UserRetrieveUpdateDestroyAPIView.as_view()),
     path('course/create/', CourseCreateAPIView.as_view()),
 ]
