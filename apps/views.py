@@ -32,12 +32,21 @@ class GroupUpdateAPIView(UpdateAPIView):
     serializer_class = GroupCreateModelSerializer
 
 
-class SkippedClassListCreateAPIView(ListCreateAPIView):
+class SkippedClassListAPIView(ListAPIView):
+    queryset = SkippedClass.objects.all()
+    serializer_class = SkippedClassModelSerializer
+
+class SkippedClassCreateAPIView(CreateAPIView):
     queryset = SkippedClass.objects.all()
     serializer_class = SkippedClassModelSerializer
 
 
-class RoomListCreateAPIView(ListCreateAPIView):
+class RoomListAPIView(ListAPIView):
+    queryset = Room.objects.all()
+    serializer_class = RoomModelSerializer
+
+
+class RoomCreateAPIView(CreateAPIView):
     queryset = Room.objects.all()
     serializer_class = RoomModelSerializer
 
