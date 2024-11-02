@@ -56,7 +56,7 @@ class Group(Model):
 class SkippedClass(Model):
     student = ForeignKey('User', CASCADE)
     group = ForeignKey('Group', CASCADE)
-    date = DateField()
+    date = DateField(auto_now=True)
 
 
 class Debtor(Model):
