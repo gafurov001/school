@@ -10,6 +10,7 @@ class User(AbstractUser):
         ADMIN = 'admin', 'Admin'
         MODERATOR = 'moderator', 'Moderator'
         TEACHER = 'teacher', 'Teacher'
+        STUDENT = 'student', 'Student'
 
     username = None
     role = CharField(max_length=20, choices=Role.choices)
