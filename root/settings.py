@@ -108,8 +108,8 @@ SPECTACULAR_SETTINGS = {
     # OTHER SETTINGS
 }
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:7070/",  # Corrected, no trailing slash
-    "https://localhost:7070",
+    "http://localhost:7070",  # Corrected, no trailing slash
+    "https://localhost:7070/",
 ]
 
 # CORS_ALLOW_ALL_ORIGINS = True
