@@ -112,9 +112,12 @@ SPECTACULAR_SETTINGS = {
 # CORS_ALLOW_CREDENTIALS = True
 
 ALLOWED_HOSTS = ['http://localhost:7070']
-CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_ALLOW_ALL = True
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:7070',
 )
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:7070'
+]
 
 
