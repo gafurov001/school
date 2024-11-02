@@ -107,6 +107,10 @@ SPECTACULAR_SETTINGS = {
     'SERVE_INCLUDE_SCHEMA': False,
     # OTHER SETTINGS
 }
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:7070",  # Corrected, no trailing slash
+#     "https://your-frontend-domain.com",
+# ]
 
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
