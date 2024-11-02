@@ -46,8 +46,8 @@ class Group(Model):
     teacher = ForeignKey('User', SET_NULL, null=True, blank=True)
     day = CharField(max_length=20, choices=Days.choices)
     room = ForeignKey('Room', SET_NULL, null=True, blank=True)
-    course_start_date = DateField()
-    course_end_date = DateField()
+    course_start_date = DateField(null=True, blank=True)
+    course_end_date = DateField(null=True, blank=True)
     course_start_time = TimeField()
     course = ForeignKey('Course', SET_NULL, null=True, blank=True)
 
