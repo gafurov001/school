@@ -1,5 +1,4 @@
-from rest_framework.generics import ListAPIView, CreateAPIView, ListCreateAPIView, RetrieveUpdateDestroyAPIView, \
-    DestroyAPIView, UpdateAPIView, RetrieveAPIView
+from rest_framework.generics import ListAPIView, CreateAPIView, DestroyAPIView, UpdateAPIView, RetrieveAPIView
 
 from apps.models import Group, SkippedClass, Room, User, Course
 from apps.serializers import GroupModelSerializer, GroupCreateModelSerializer, SkippedClassModelSerializer, \
@@ -14,7 +13,7 @@ class GroupListAPIView(ListAPIView):
 
 class GroupCreateAPIView(CreateAPIView):
     queryset = Group.objects.all()
-    serializer_class = GroupModelSerializer
+    serializer_class = GroupCreateModelSerializer
 
 
 class GroupRetrieveAPIView(RetrieveAPIView):
