@@ -43,7 +43,7 @@ class Group(Model):
         SATURDAY = 'saturday', 'Saturday'
 
     name = CharField(max_length=50)
-    teacher = OneToOneField('User', SET_NULL, null=True, blank=True)
+    teacher = ForeignKey('User', SET_NULL, null=True, blank=True)
     day = CharField(max_length=20, choices=Days.choices)
     room = ForeignKey('Room', SET_NULL, null=True, blank=True)
     course_start_date = DateField()
