@@ -109,7 +109,7 @@ SPECTACULAR_SETTINGS = {
 }
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:7070",  # Frontend domeni
+    "http://localhost:7070/",  # Frontend domeni
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
