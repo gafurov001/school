@@ -110,5 +110,14 @@ SPECTACULAR_SETTINGS = {
 
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
-CORS_ALLOWED_ORIGIN_REGEXES = ['http://localhost:7070/']
-CSRF_TRUSTED_ORIGINS = ["'http://localhost:7070/'"]
+# CORS_ALLOWED_ORIGINS = ['http://localhost:7070']
+CSRF_TRUSTED_ORIGINS = ["http://localhost:7070"]
+CORS_ALLOW_METHODS = (
+    "DELETE",
+    "GET",
+    "OPTIONS",
+    "PATCH",
+    "POST",
+    "PUT",
+)
+
