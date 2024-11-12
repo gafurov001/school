@@ -87,7 +87,7 @@ class StudentGenericAPIView(GenericAPIView):
 
     def post(self, request, pk):
         user = User.objects.filter(id=pk).update(**request.data)
-        return Response(status=202)
+        return Response(status=201)
 
 
 class StudentRetrieveAPIView(RetrieveAPIView):
@@ -116,7 +116,7 @@ class WorkerGenericAPIView(GenericAPIView):
 
     def post(self, request, pk):
         user = User.objects.filter(id=pk).update(**request.data)
-        return Response(status=202)
+        return Response(status=201)
 
 
 class WorkerRetrieveAPIView(RetrieveAPIView):
