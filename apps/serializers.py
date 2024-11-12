@@ -27,7 +27,7 @@ class SkippedClassModelSerializer(ModelSerializer):
 class RoomModelSerializer(ModelSerializer):
     class Meta:
         model = Room
-        fields = 'id', 'name', 'room_capacity', 'number_of_desks_and_chairs'
+        fields = '__all__'
 
 
 class StudentModelSerializer(ModelSerializer):

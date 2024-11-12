@@ -4,7 +4,8 @@ from apps.views import GroupListAPIView, GroupCreateAPIView, \
     StudentCreateAPIView, StudentListAPIView, CourseCreateAPIView, \
     StudentDestroyAPIView, StudentUpdateAPIView, StudentRetrieveAPIView, GroupUpdateAPIView, GroupDestroyAPIView, \
     GroupRetrieveAPIView, RoomCreateAPIView, RoomListAPIView, SkippedClassCreateAPIView, SkippedClassListAPIView, \
-    WorkerCreateAPIView, WorkerListAPIView, WorkerDestroyAPIView, WorkerUpdateAPIView, WorkerRetrieveAPIView
+    WorkerCreateAPIView, WorkerListAPIView, WorkerDestroyAPIView, WorkerUpdateAPIView, WorkerRetrieveAPIView, \
+    RoomDestroyAPIView
 
 urlpatterns = [
     path('group/list/', GroupListAPIView.as_view()),
@@ -15,6 +16,7 @@ urlpatterns = [
     path('skipeed/list/', SkippedClassListAPIView.as_view()),
     path('skipeed/create/', SkippedClassCreateAPIView.as_view()),
     path('room/create/', RoomCreateAPIView.as_view()),
+    path('room/delete/<int:pk>/', RoomDestroyAPIView.as_view()),
     path('room/list/', RoomListAPIView.as_view()),
     path('student/create/', StudentCreateAPIView.as_view()),
     path('student/list/', StudentListAPIView.as_view()),
