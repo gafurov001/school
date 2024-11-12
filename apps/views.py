@@ -85,7 +85,8 @@ class StudentGenericAPIView(GenericAPIView):
     serializer_class = StudentRetrieveUpdateDestroyModelSerializer
 
     def post(self, request, pk):
-        return User.objects.filter(id=pk).update(**request.data)
+        user = User.objects.filter(id=pk).update(**request.data)
+        return user
 
 
 class StudentRetrieveAPIView(RetrieveAPIView):
@@ -113,7 +114,8 @@ class WorkerGenericAPIView(GenericAPIView):
     serializer_class = WorkerRetrieveUpdateDestroyModelSerializer
 
     def post(self, request, pk):
-        return User.objects.filter(id=pk).update(**request.data)
+        user = User.objects.filter(id=pk).update(**request.data)
+        return user
 
 
 class WorkerRetrieveAPIView(RetrieveAPIView):
