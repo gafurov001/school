@@ -2,9 +2,9 @@ from django.urls import path
 
 from apps.views import GroupListAPIView, GroupCreateAPIView, \
     StudentCreateAPIView, StudentListAPIView, CourseCreateAPIView, \
-    StudentDestroyAPIView, StudentUpdateAPIView, StudentRetrieveAPIView, GroupUpdateAPIView, GroupDestroyAPIView, \
+    StudentDestroyAPIView, StudentGenericAPIView, StudentRetrieveAPIView, GroupUpdateAPIView, GroupDestroyAPIView, \
     GroupRetrieveAPIView, RoomCreateAPIView, RoomListAPIView, SkippedClassCreateAPIView, SkippedClassListAPIView, \
-    WorkerCreateAPIView, WorkerListAPIView, WorkerDestroyAPIView, WorkerUpdateAPIView, WorkerRetrieveAPIView, \
+    WorkerCreateAPIView, WorkerListAPIView, WorkerDestroyAPIView, WorkerGenericAPIView, WorkerRetrieveAPIView, \
     RoomDestroyAPIView
 
 urlpatterns = [
@@ -21,12 +21,12 @@ urlpatterns = [
     path('student/create/', StudentCreateAPIView.as_view()),
     path('student/list/', StudentListAPIView.as_view()),
     path('student/delete/<int:pk>', StudentDestroyAPIView.as_view()),
-    path('student/update/<int:pk>', StudentUpdateAPIView.as_view()),
+    path('student/update/<int:pk>', StudentGenericAPIView.as_view()),
     path('student/detail/<int:pk>', StudentRetrieveAPIView.as_view()),
     path('worker/create/', WorkerCreateAPIView.as_view()),
     path('worker/list/', WorkerListAPIView.as_view()),
     path('worker/delete/<int:pk>', WorkerDestroyAPIView.as_view()),
-    path('worker/update/<int:pk>', WorkerUpdateAPIView.as_view()),
+    path('worker/update/<int:pk>', WorkerGenericAPIView.as_view()),
     path('worker/detail/<int:pk>', WorkerRetrieveAPIView.as_view()),
     path('course/create/', CourseCreateAPIView.as_view()),
 ]

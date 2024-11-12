@@ -1,5 +1,6 @@
 from django.contrib.auth.hashers import make_password
-from rest_framework.generics import ListAPIView, CreateAPIView, DestroyAPIView, UpdateAPIView, RetrieveAPIView
+from rest_framework.generics import ListAPIView, CreateAPIView, DestroyAPIView, UpdateAPIView, RetrieveAPIView, \
+    GenericAPIView
 
 from apps.models import Group, SkippedClass, Room, User, Course
 from apps.serializers import GroupModelSerializer, GroupCreateModelSerializer, SkippedClassModelSerializer, \
@@ -79,9 +80,12 @@ class StudentDestroyAPIView(DestroyAPIView):
     serializer_class = StudentRetrieveUpdateDestroyModelSerializer
 
 
-class StudentUpdateAPIView(UpdateAPIView):
+class StudentGenericAPIView(GenericAPIView):
     queryset = User.objects.filter(role='student').all()
     serializer_class = StudentRetrieveUpdateDestroyModelSerializer
+
+    def post(self, request, pk):
+        return User.objects.filter(id=pk).update(**request.data)
 
 
 class StudentRetrieveAPIView(RetrieveAPIView):
@@ -90,7 +94,7 @@ class StudentRetrieveAPIView(RetrieveAPIView):
 
 
 class WorkerListAPIView(ListAPIView):
-    queryset = User.objects.filter(role=not 'student').all()
+    queryset = User.objects.filter(role__in=['admin', 'moderator', 'teacher']).all()
     serializer_class = WorkerModelSerializer
 
 
@@ -100,21 +104,23 @@ class WorkerCreateAPIView(CreateAPIView):
 
 
 class WorkerDestroyAPIView(DestroyAPIView):
-    queryset = User.objects.filter(role=not 'student').all()
+    queryset = User.objects.filter(role__in=['admin', 'moderator', 'teacher']).all()
     serializer_class = WorkerRetrieveUpdateDestroyModelSerializer
 
 
-class WorkerUpdateAPIView(UpdateAPIView):
-    queryset = User.objects.filter(role=not 'student').all()
+class WorkerGenericAPIView(GenericAPIView):
+    queryset = User.objects.filter(role__in=['admin', 'moderator', 'teacher']).all()
     serializer_class = WorkerRetrieveUpdateDestroyModelSerializer
+
+    def post(self, request, pk):
+        return User.objects.filter(id=pk).update(**request.data)
 
 
 class WorkerRetrieveAPIView(RetrieveAPIView):
-    queryset = User.objects.filter(role=not 'student').all()
+    queryset = User.objects.filter(role__in=['admin', 'moderator', 'teacher']).all()
     serializer_class = WorkerRetrieveUpdateDestroyModelSerializer
 
 
 class CourseCreateAPIView(CreateAPIView):
     queryset = Course.objects.all()
     serializer_class = CourseModelSerializer
-
