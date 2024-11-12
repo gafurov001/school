@@ -27,25 +27,43 @@ class SkippedClassModelSerializer(ModelSerializer):
 class RoomModelSerializer(ModelSerializer):
     class Meta:
         model = Room
-        fields = 'name', 'room_capacity', 'number_of_desks_and_chairs'
+        fields = 'id', 'name', 'room_capacity', 'number_of_desks_and_chairs'
 
 
-class UserModelSerializer(ModelSerializer):
+class StudentModelSerializer(ModelSerializer):
+    class Meta:
+        model = User
+        fields = 'id', 'first_name', 'last_name', 'phone_number'
+
+
+class StudentCreateModelSerializer(ModelSerializer):
+    class Meta:
+        model = User
+        fields = 'first_name', 'last_name', 'phone_number', 'password', 'date_of_birth', 'gender'
+
+
+class StudentRetrieveUpdateDestroyModelSerializer(ModelSerializer):
+    class Meta:
+        model = User
+        fields = 'id', 'first_name', 'last_name', 'balance', 'branch'
+
+
+class WorkerModelSerializer(ModelSerializer):
     class Meta:
         model = User
         fields = 'id', 'first_name', 'last_name', 'phone_number', 'role'
 
 
-class UserCreateModelSerializer(ModelSerializer):
+class WorkerCreateModelSerializer(ModelSerializer):
     class Meta:
         model = User
-        fields = 'first_name', 'last_name', 'phone_number', 'role', 'date_of_birth', 'gender', 'photo'
+        fields = 'first_name', 'last_name', 'phone_number', 'role', 'date_of_birth', 'gender'
 
 
-class UserRetrieveUpdateDestroyModelSerializer(ModelSerializer):
+class WorkerRetrieveUpdateDestroyModelSerializer(ModelSerializer):
     class Meta:
         model = User
-        fields = 'id', 'first_name', 'last_name', 'photo', 'balance', 'role', 'branch'
+        fields = 'id', 'first_name', 'last_name', 'balance', 'role', 'branch'
 
 
 class CourseModelSerializer(ModelSerializer):

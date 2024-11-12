@@ -1,5 +1,5 @@
 from django.contrib.auth.models import AbstractUser
-from django.db.models import Model, OneToOneField, SET_NULL, TextChoices, CharField, ForeignKey, DateField, TimeField, \
+from django.db.models import Model, SET_NULL, TextChoices, CharField, ForeignKey, DateField, TimeField, \
     IntegerField, CASCADE, TextField, ImageField
 
 from apps.managers import CustomUserManager
@@ -19,7 +19,11 @@ class User(AbstractUser):
     date_of_birth = DateField()
     gender = CharField(choices=[('male', 'Male'), ('female', 'Female')])
     balance = IntegerField(null=True, blank=True)
-    photo = ImageField(upload_to='%Y/%m/%d/', null=True, blank=True)
+    # photo = ImageField(upload_to='%Y/%m/%d/', blank=True)
+    date_joined = None
+    is_active = None
+    is_staff = None
+    is_superuser = None
 
     USERNAME_FIELD = 'phone_number'
     REQUIRED_FIELDS = []
@@ -34,14 +38,9 @@ class Room(Model):
 
 class Group(Model):
     class Days(TextChoices):
-        EVEN_DAY = 'event day', 'Event day'
-        ODD_DAY = 'odd day', 'Odd day'
-        MONDAY = 'monday', 'Monday'
-        TUESDAY = 'tuesday', 'Tuesday'
-        WEDNESDAY = 'wednesday', 'Wednesday'
-        THURSDAY = 'thursday', 'Thursday'
-        FRIDAY = 'friday', 'Friday'
-        SATURDAY = 'saturday', 'Saturday'
+        HAR_KUN = 'har kun', 'har kun'
+        JUFT_KUN = 'juft kun', 'Juft'
+        TOQ_KUN = 'toq kun', 'Toq kun'
 
     name = CharField(max_length=50)
     teacher = ForeignKey('User', SET_NULL, null=True, blank=True)
