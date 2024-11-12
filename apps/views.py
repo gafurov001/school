@@ -117,3 +117,4 @@ class WorkerRetrieveAPIView(RetrieveAPIView):
 class CourseCreateAPIView(CreateAPIView):
     queryset = Course.objects.all()
     serializer_class = CourseModelSerializer
+

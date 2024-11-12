@@ -30,3 +30,4 @@ urlpatterns = [
     path('worker/detail/<int:pk>', WorkerRetrieveAPIView.as_view()),
     path('course/create/', CourseCreateAPIView.as_view()),
 ]
+
