@@ -1,6 +1,7 @@
 from django.contrib.auth.hashers import make_password
 from rest_framework.generics import ListAPIView, CreateAPIView, DestroyAPIView, UpdateAPIView, RetrieveAPIView, \
     GenericAPIView
+from rest_framework.response import Response
 
 from apps.models import Group, SkippedClass, Room, User, Course
 from apps.serializers import GroupModelSerializer, GroupCreateModelSerializer, SkippedClassModelSerializer, \
@@ -86,7 +87,7 @@ class StudentGenericAPIView(GenericAPIView):
 
     def post(self, request, pk):
         user = User.objects.filter(id=pk).update(**request.data)
-        return user
+        return Response(status=202)
 
 
 class StudentRetrieveAPIView(RetrieveAPIView):
@@ -115,7 +116,7 @@ class WorkerGenericAPIView(GenericAPIView):
 
     def post(self, request, pk):
         user = User.objects.filter(id=pk).update(**request.data)
-        return user
+        return Response(status=202)
 
 
 class WorkerRetrieveAPIView(RetrieveAPIView):
