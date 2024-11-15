@@ -1,4 +1,5 @@
 from django.contrib.auth.hashers import make_password
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.generics import ListAPIView, CreateAPIView, DestroyAPIView, UpdateAPIView, RetrieveAPIView, \
     GenericAPIView
 from rest_framework.response import Response
@@ -31,9 +32,13 @@ class GroupDestroyAPIView(DestroyAPIView):
     serializer_class = GroupCreateModelSerializer
 
 
-class GroupUpdateAPIView(UpdateAPIView):
+class GroupGenericAPIView(GenericAPIView):
     queryset = Group.objects.all()
     serializer_class = GroupCreateModelSerializer
+
+    def post(self, request, pk):
+        Group.objects.filter(id=pk).update(**request.data)
+        return Response(status=201)
 
 
 class SkippedClassListAPIView(ListAPIView):
@@ -59,6 +64,15 @@ class RoomDestroyAPIView(DestroyAPIView):
 class RoomCreateAPIView(CreateAPIView):
     queryset = Room.objects.all()
     serializer_class = RoomModelSerializer
+
+
+class RoomGenericAPIView(GenericAPIView):
+    queryset = Room.objects.all()
+    serializer_class = RoomModelSerializer
+
+    def post(self, request, pk):
+        Room.objects.filter(id=pk).update(**request.data)
+        return Response(status=201)
 
 
 class StudentListAPIView(ListAPIView):
@@ -98,6 +112,8 @@ class StudentRetrieveAPIView(RetrieveAPIView):
 class WorkerListAPIView(ListAPIView):
     queryset = User.objects.filter(role__in=['admin', 'moderator', 'teacher']).all()
     serializer_class = WorkerModelSerializer
+    filter_backends = DjangoFilterBackend,
+    filterset_fields = 'role',
 
 
 class WorkerCreateAPIView(CreateAPIView):

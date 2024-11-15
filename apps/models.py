@@ -16,6 +16,7 @@ class User(AbstractUser):
     role = CharField(max_length=20, choices=Role.choices)
     phone_number = CharField(max_length=13, unique=True)
     branch = CharField(max_length=255)
+    photo = TextField(null=True, blank=True)
     date_of_birth = DateField()
     gender = CharField(choices=[('male', 'Male'), ('female', 'Female')])
     balance = IntegerField(null=True, blank=True)
