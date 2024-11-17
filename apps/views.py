@@ -65,6 +65,10 @@ class RoomCreateAPIView(CreateAPIView):
     queryset = Room.objects.all()
     serializer_class = RoomModelSerializer
 
+class RoomRetrieveAPIView(RetrieveAPIView):
+    queryset = Room.objects.all()
+    serializer_class = RoomModelSerializer
+
 
 class RoomGenericAPIView(GenericAPIView):
     queryset = Room.objects.all()

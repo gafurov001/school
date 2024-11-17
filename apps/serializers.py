@@ -51,7 +51,7 @@ class StudentRetrieveUpdateDestroyModelSerializer(ModelSerializer):
 class WorkerModelSerializer(ModelSerializer):
     class Meta:
         model = User
-        fields = 'id', 'first_name', 'last_name', 'phone_number', 'role'
+        fields = 'id', 'first_name', 'last_name', 'phone_number', 'role', 'photo', 'date_of_birth'
 
 
 class WorkerCreateModelSerializer(ModelSerializer):
@@ -63,7 +63,7 @@ class WorkerCreateModelSerializer(ModelSerializer):
 class WorkerRetrieveUpdateDestroyModelSerializer(ModelSerializer):
     class Meta:
         model = User
-        fields = 'id', 'first_name', 'last_name', 'balance', 'role', 'branch'
+        fields = '__all__'
 
 
 class CourseModelSerializer(ModelSerializer):
