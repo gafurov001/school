@@ -1,6 +1,6 @@
 from django.contrib.auth.hashers import make_password
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework.generics import ListAPIView, CreateAPIView, DestroyAPIView, UpdateAPIView, RetrieveAPIView, \
+from rest_framework.generics import ListAPIView, CreateAPIView, DestroyAPIView, RetrieveAPIView, \
     GenericAPIView
 from rest_framework.response import Response
 
@@ -37,7 +37,7 @@ class GroupGenericAPIView(GenericAPIView):
     serializer_class = GroupCreateModelSerializer
 
     def post(self, request, pk):
-        Group.objects.filter(id=pk).update(**request.data)
+        group = Group.objects.filter(id=pk).update(**request.data)
         return Response(status=201)
 
 
@@ -71,7 +71,7 @@ class RoomGenericAPIView(GenericAPIView):
     serializer_class = RoomModelSerializer
 
     def post(self, request, pk):
-        Room.objects.filter(id=pk).update(**request.data)
+        room = Room.objects.filter(id=pk).update(**request.data)
         return Response(status=201)
 
 

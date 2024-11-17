@@ -1,6 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db.models import Model, SET_NULL, TextChoices, CharField, ForeignKey, DateField, TimeField, \
-    IntegerField, CASCADE, TextField, ImageField
+    IntegerField, CASCADE, TextField, ImageField, BooleanField
 
 from apps.managers import CustomUserManager
 
@@ -20,9 +20,8 @@ class User(AbstractUser):
     date_of_birth = DateField()
     gender = CharField(choices=[('male', 'Male'), ('female', 'Female')])
     balance = IntegerField(null=True, blank=True)
-    # photo = ImageField(upload_to='%Y/%m/%d/', blank=True)
     date_joined = None
-    is_active = None
+    is_active = BooleanField(default=True)
     is_staff = None
     is_superuser = None
 
