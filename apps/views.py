@@ -147,3 +147,39 @@ class WorkerRetrieveAPIView(RetrieveAPIView):
 class CourseCreateAPIView(CreateAPIView):
     queryset = Course.objects.all()
     serializer_class = CourseModelSerializer
+
+
+class StudentCountGenericAPIView(GenericAPIView):
+    queryset = User.objects.filter(role='student').all()
+
+    def get(self, request):
+        _count = User.objects.filter(role='student').count()
+        return Response({"count": _count})
+
+
+class GroupCountGenericAPIView(GenericAPIView):
+    queryset = Group.objects.all()
+
+    def get(self, request):
+        _count = Group.objects.count()
+        return Response({"count": _count})
+
+
+class WorkerCountGenericAPIView(GenericAPIView):
+    queryset = User.objects.filter(role__in=['admin', 'teacher', 'moderator']).all()
+
+    def get(self, request):
+        _count = User.objects.filter(role__in=['admin', 'teacher', 'moderator']).count()
+        return Response({"count": _count})
+
+
+class RoomCountGenericAPIView(GenericAPIView):
+    queryset = Room.objects.all()
+
+    def get(self, request):
+        _count = Room.objects.count()
+        return Response({"count": _count})
+
+
+
+

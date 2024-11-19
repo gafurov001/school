@@ -32,9 +32,8 @@ class User(AbstractUser):
 
 class Room(Model):
     name = CharField(max_length=20)
-    room_capacity = CharField(max_length=10)
-    number_of_desks_and_chairs = CharField(max_length=20)
-
+    room_capacity = IntegerField()
+    number_of_desks_and_chairs = IntegerField()
 
 class Group(Model):
     class Days(TextChoices):
