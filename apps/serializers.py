@@ -33,7 +33,7 @@ class RoomModelSerializer(ModelSerializer):
 class StudentModelSerializer(ModelSerializer):
     class Meta:
         model = User
-        fields = 'id', 'first_name', 'last_name', 'phone_number'
+        fields = 'id', 'first_name', 'last_name', 'phone_number', 'photo', 'gender', 'date_of_birth'
 
 
 class StudentCreateModelSerializer(ModelSerializer):
