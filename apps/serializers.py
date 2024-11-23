@@ -1,4 +1,5 @@
-from rest_framework.serializers import ModelSerializer, Serializer
+from rest_framework.fields import IntegerField
+from rest_framework.serializers import ModelSerializer
 
 from apps.models import Group, SkippedClass, Room, User, Course
 
@@ -70,3 +71,14 @@ class CourseModelSerializer(ModelSerializer):
     class Meta:
         model = Course
         fields = "__all__"
+
+
+class CountModelSerializer(ModelSerializer):
+    student = IntegerField()
+    group = IntegerField()
+    worker = IntegerField()
+    room = IntegerField()
+
+    class Meta:
+        model = User
+        fields = 'student', 'group', 'worker', 'room'

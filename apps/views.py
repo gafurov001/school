@@ -9,7 +9,7 @@ from apps.serializers import GroupModelSerializer, GroupCreateModelSerializer, S
     RoomModelSerializer, StudentModelSerializer, StudentCreateModelSerializer, \
     StudentRetrieveUpdateDestroyModelSerializer, \
     CourseModelSerializer, WorkerRetrieveUpdateDestroyModelSerializer, WorkerCreateModelSerializer, \
-    WorkerModelSerializer
+    WorkerModelSerializer, CountModelSerializer
 
 
 class GroupListAPIView(ListAPIView):
@@ -149,36 +149,16 @@ class CourseCreateAPIView(CreateAPIView):
     serializer_class = CourseModelSerializer
 
 
-class StudentCountGenericAPIView(GenericAPIView):
+class CountGenericAPIView(GenericAPIView):
     queryset = User.objects.filter(role='student').all()
+    serializer_class = CountModelSerializer
 
     def get(self, request):
-        _count = User.objects.filter(role='student').count()
-        return Response({"count": _count})
-
-
-class GroupCountGenericAPIView(GenericAPIView):
-    queryset = Group.objects.all()
-
-    def get(self, request):
-        _count = Group.objects.count()
-        return Response({"count": _count})
-
-
-class WorkerCountGenericAPIView(GenericAPIView):
-    queryset = User.objects.filter(role__in=['admin', 'teacher', 'moderator']).all()
-
-    def get(self, request):
-        _count = User.objects.filter(role__in=['admin', 'teacher', 'moderator']).count()
-        return Response({"count": _count})
-
-
-class RoomCountGenericAPIView(GenericAPIView):
-    queryset = Room.objects.all()
-
-    def get(self, request):
-        _count = Room.objects.count()
-        return Response({"count": _count})
+        student = User.objects.filter(role='student').count()
+        group = Group.objects.count()
+        worker = User.objects.filter(role__in=['admin', 'teacher', 'moderator']).count()
+        room = Room.objects.count()
+        return Response({"student": student, "group": group, "worker": worker, "room": room})
 
 
 
