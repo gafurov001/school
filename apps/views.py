@@ -89,7 +89,6 @@ class StudentCreateAPIView(CreateAPIView):
     serializer_class = StudentCreateModelSerializer
 
     def create(self, request, *args, **kwargs):
-        request.data['role'] = 'student'
         request.data['password'] = make_password(request.data['password'])
         return super().create(request, *args, **kwargs)
 
@@ -123,6 +122,10 @@ class WorkerListAPIView(ListAPIView):
 class WorkerCreateAPIView(CreateAPIView):
     queryset = User.objects.all()
     serializer_class = WorkerCreateModelSerializer
+
+    def create(self, request, *args, **kwargs):
+        request.data['password'] = make_password(request.data['password'])
+        return super().create(request, *args, **kwargs)
 
 
 class WorkerDestroyAPIView(DestroyAPIView):

@@ -13,7 +13,7 @@ class User(AbstractUser):
         STUDENT = 'student', 'Student'
 
     username = None
-    role = CharField(max_length=20, choices=Role.choices)
+    role = CharField(max_length=20, choices=Role.choices, default=Role.STUDENT)
     phone_number = CharField(max_length=13, unique=True)
     branch = CharField(max_length=255)
     photo = TextField(null=True, blank=True)
